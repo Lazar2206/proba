@@ -1,0 +1,38 @@
+header {
+    align-items: center;
+    gap: 2em;
+    padding: 2em 0;
+    fill: var(--black);
+  }
+  
+  .logo {
+    font-size: 36px;
+  }
+  
+  nav {
+    align-items: center;
+    flex-grow: 1;
+    gap: 2em;
+  }
+  
+  nav ul {
+    align-items: center;
+    gap: 2em;
+  }
+  
+  .primary-links {
+    margin: auto;
+  }
+  
+  nav a {
+    font-weight: 500;
+    font-size: 16px;
+  }
+  
+  .primary-links .active {
+    color: var(--primary-color) !important;
+  }
+  
+  nav a:hover {
+    color: var(--primary-color);
+  }
