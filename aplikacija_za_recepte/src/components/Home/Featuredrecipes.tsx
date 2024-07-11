@@ -21,9 +21,10 @@ const FeaturedRecipes = () => {
         </p>
       </div>
       <div className='frecipe-cards column'>
-        {recipes?.slice(0, 10).map((recipe) => (
+      {recipes?.slice(0, 10).map((recipe, index) => (
           <RecipeCard
-            link={`recipe/${recipe.id}`}
+            key={index}
+            link={`recipes/${recipe.id}`}
             image={recipe.image}
             title={recipe.title}
             difficulty={recipe.difficulty}
