@@ -33,7 +33,7 @@ const Recipes = () => {
 
   useEffect(() => {
     let pages: number[] = [];
-    for (let i = 1; i < Math.ceil(filteredRecipes?.length / 20); i++) {
+    for (let i = 1; i <= Math.ceil(filteredRecipes?.length / 20); i++) {
       pages.push(i);
     }
     setPagesArray(pages);
@@ -64,10 +64,6 @@ const Recipes = () => {
       </div>
 
       <CategoryCardsContainer />
-
-      <div className='filters'>
-        <div className='filter'></div>
-      </div>
 
       <div className='frecipe-cards column'>
         {filteredRecipes

@@ -19,7 +19,7 @@ const Recipe = () => {
       let response = null;
       if (id) {
         response = await getRecipeDetails(id);
-        console.log(response);
+        
         let newRecipeDetails = new RecipeDetails(
           response.id,
           response.title,
@@ -42,50 +42,56 @@ const Recipe = () => {
   }, [id]);
 
   return (
-    <div className='recipeDetails'>
-      <div className='detailsContainer'>
-        <div className='detailsContent'>
-          <h2 className='balooFont'>{recipeDetails?.title}</h2>
-          <p>{recipeDetails?.description}</p>
-          <div className='detailsIcons row'>
-            <div className='row'>
-              <LuClock size={24} />
-              <p>{recipeDetails?.getTimeForContent()}</p>
+    <>
+    {recipeDetails ? (
+      <div className='recipeDetails'>
+        <div className='detailsContainer'>
+          <div className='detailsContent'>
+            <h2 className='balooFont'>{recipeDetails?.title}</h2>
+            <p>{recipeDetails?.description}</p>
+            <div className='detailsIcons row'>
+              <div className='row'>
+                <LuClock size={24} />
+                <p>{recipeDetails?.getTimeForContent()}</p>
+              </div>
+              <div className='row'>
+                <img src={foodTray} alt='food-tray' />
+                <p>{recipeDetails?.difficulty}</p>
+              </div>
             </div>
-            <div className='row'>
-              <img src={foodTray} alt='food-tray' />
-              <p>{recipeDetails?.difficulty}</p>
+            </div>
+            <div className='detailsImg'>
+              <img src={recipeDetails?.image} alt={recipeDetails?.title} />
+            </div>
+          </div>
+
+          <div className='ingredientsSection'>
+            <h3>Ingredients</h3>
+            <div className='ingredients'>
+              {recipeDetails?.ingredients.map((ingredient, index) => (
+                <p key={index}>
+                  {index + 1}. {ingredient}
+                </p>
+              ))}
+            </div>
+          </div>
+     
+          <div className='methodSection'>
+            <h3>Method</h3>
+            <div className='method'>
+              {recipeDetails?.formatMethod().map((step, index) => (
+                <p key={index}>
+                  <span>Step {index + 1}: </span>
+                  {step}
+                </p>
+              ))}
             </div>
           </div>
         </div>
-        <div className='detailsImg'>
-          <img src={recipeDetails?.image} alt={recipeDetails?.title} />
-        </div>
-      </div>
-
-      <div className='ingredientsSection'>
-        <h3>Ingredients</h3>
-        <div className='ingredients'>
-          {recipeDetails?.ingredients.map((ingredient, index) => (
-            <p key={index}>
-              {index + 1}. {ingredient}
-            </p>
-          ))}
-        </div>
-      </div>
-
-      <div className='methodSection'>
-        <h3>Method</h3>
-        <div className='method'>
-          {recipeDetails?.formatMethod().map((step, index) => (
-            <p key={index}>
-              <span>Step {index + 1}: </span>
-              {step}
-            </p>
-          ))}
-        </div>
-      </div>
-    </div>
+       ) : (
+        <div>No details! Check your API!</div>
+      )}
+    </>
   );
   };
   
