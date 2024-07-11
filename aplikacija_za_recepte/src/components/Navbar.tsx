@@ -4,9 +4,14 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 import { FaFacebookF, FaInstagram, FaTiktok } from 'react-icons/fa';
 
 import '../styles/Navbar.css';
+import ButtonComponent from './ButtonComponent';
 
 const Navbar = () => {
   const [openSidebar, setOpenSidebar] = useState(false);
+
+  const handleButtonClick = () => {
+    console.log('Button clicked!');
+  };
 
   return (
     <>
@@ -16,6 +21,7 @@ const Navbar = () => {
         </Link>
         <div
           className='toggleMenu'
+          data-testid='toggle-menu'
           onClick={() => setOpenSidebar(!openSidebar)}
         >
           <RxHamburgerMenu size={20} />
@@ -74,7 +80,11 @@ const Navbar = () => {
           </ul>
         </nav>
       </header>
-      <div className={`sidebar ${openSidebar && 'open'}`}>
+      <div
+        className={`sidebar ${openSidebar && 'open'}`}
+        role='navigation'
+        aria-label='sidebar'
+      >
         <ul className='sidebar-primary-links'>
           <li onClick={() => setOpenSidebar(false)}>
             <NavLink
@@ -127,6 +137,7 @@ const Navbar = () => {
           </li>
         </ul>
         </div>
+        <ButtonComponent onButtonClick={handleButtonClick} />
     </>
   );
 };

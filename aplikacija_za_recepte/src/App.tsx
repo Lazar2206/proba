@@ -12,15 +12,17 @@ import Footer from './components/Footer';
 function App() {
   return (
     <BrowserRouter>
-    <Navbar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/recipes' element={<Recipes />} />
-        <Route path='/recipes/:id' element={<Recipe />} />
-        <Route path='/favorites' element={<Favorites />} />
-      </Routes>
-      <Footer />
+     <div data-testid='app-container'>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/recipes' element={<Recipes />} />
+          <Route path='/recipes/:id' element={<Recipe />} />
+          <Route path='/favorites' element={<Favorites />} />
+        </Routes>
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 }
