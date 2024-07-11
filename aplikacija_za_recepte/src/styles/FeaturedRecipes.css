@@ -65,6 +65,22 @@
     height: 24px;
   }
   
+  .card .like {
+    position: absolute;
+    top: 4%;
+    right: 7%;
+    padding: 0.5em;
+    box-shadow: 0px 5px 10px rgba(255, 99, 99, 0.2);
+    cursor: pointer;
+    border-radius: 50%;
+    background: #fff;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .card .like:hover {
+    transform: scale(1.1);
+  }
+  
   @media screen and (max-width: 1560px) {
     .frecipes .section-title h2 {
       font-size: 55px;

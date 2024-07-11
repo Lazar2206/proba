@@ -8,6 +8,7 @@ const ContextWrapper: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const [favorites, setFavorites] = useState<number[]>([]);
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -27,11 +28,28 @@ const ContextWrapper: React.FC<{ children: React.ReactNode }> = ({
       setRecipes(recipesArray);
     };
 
+    const fetchFavorites = () => {
+      let favoritesString = localStorage.getItem('favorites');
+      if (favoritesString) {
+        const parsedFavorites = JSON.parse(favoritesString);
+        setFavorites(parsedFavorites);
+      }
+    };
+
     fetchRecipes();
+    fetchFavorites();
   }, []);
 
+  useEffect(() => {
+    if (favorites) {
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+    }
+  }, [favorites]);
+
   return (
-    <GlobalContext.Provider value={{ recipes, setRecipes }}>
+    <GlobalContext.Provider
+      value={{ recipes, setRecipes, favorites, setFavorites }}
+    >
       {children}
     </GlobalContext.Provider>
   );

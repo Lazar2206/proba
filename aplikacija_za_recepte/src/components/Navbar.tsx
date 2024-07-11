@@ -38,6 +38,14 @@ const Navbar = () => {
               About us
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to={'/favorites'}
+              className={({ isActive }) => (isActive ? 'active' : '')}
+            >
+              Favorites
+            </NavLink>
+          </li>
         </ul>
         <ul className='secondary-links row'>
           <li>

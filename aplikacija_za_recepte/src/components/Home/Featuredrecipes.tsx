@@ -29,6 +29,7 @@ const FeaturedRecipes = () => {
             title={recipe.title}
             difficulty={recipe.difficulty}
             prepareTime='30min'
+            id={recipe.id}
           />
         ))}
       </div>
