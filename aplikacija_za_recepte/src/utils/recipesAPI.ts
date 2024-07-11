@@ -17,3 +17,19 @@ export const getRecipes = async () => {
     console.error(error);
   }
 };
+
+export const getRecipeDetails = async (id: string) => {
+  try {
+    const detailsOptions = {
+      method: 'GET',
+      url: `https://the-mexican-food-db.p.rapidapi.com/${id}`,
+      headers: {
+        'x-rapidapi-key': 'ccf4ac6acbmsh044b11f090f3e3cp1806ffjsn3568ba1a0ee6',
+        'x-rapidapi-host': 'the-mexican-food-db.p.rapidapi.com',
+      },
+    };
+
+    const response = await axios.request(detailsOptions);
+    return response.data;
+  } catch (error) {}
+};

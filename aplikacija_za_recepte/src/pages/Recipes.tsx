@@ -75,7 +75,7 @@ const Recipes = () => {
           .map((recipe, index) => (
             <RecipeCard
               key={index}
-              link={`recipes/${recipe.id}`}
+              link={`/recipes/${recipe.id}`}
               image={recipe.image}
               title={recipe.title}
               difficulty={recipe.difficulty}
