@@ -7,6 +7,7 @@ import Recipes from './pages/Recipes';
 import Favorites from './pages/Favorites';
 
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/recipes/:id' element={<Recipe />} />
         <Route path='/favorites' element={<Favorites />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

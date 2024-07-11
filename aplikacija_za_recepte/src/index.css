@@ -14,6 +14,8 @@
   box-sizing: border-box;
   font-family: 'Amiko', sans-serif;
   font-style: normal;
+  margin: 0;
+  padding: 0;
 }
 
 .lobsterFont {
