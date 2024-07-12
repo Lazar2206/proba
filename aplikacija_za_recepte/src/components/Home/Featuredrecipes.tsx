@@ -2,14 +2,12 @@ import { useContext } from 'react';
 import '../../styles/FeaturedRecipes.css';
 import RecipeCard from '../Recipes/RecipeCard';
 import GlobalContext from '../../context/GlobalContext';
-
 const FeaturedRecipes = () => {
   const context = useContext(GlobalContext);
   if (!context) {
     throw new Error('There is a problem with the ContextWrapper!');
   }
   const { recipes } = context;
-
   return (
     <section className='frecipes container'>
       <div className='section-title'>
@@ -21,7 +19,7 @@ const FeaturedRecipes = () => {
         </p>
       </div>
       <div className='frecipe-cards column'>
-      {recipes?.slice(0, 10).map((recipe, index) => (
+        {recipes?.slice(0, 10).map((recipe, index) => (
           <RecipeCard
             key={index}
             link={`recipes/${recipe.id}`}
@@ -36,5 +34,4 @@ const FeaturedRecipes = () => {
     </section>
   );
 };
-
 export default FeaturedRecipes;
