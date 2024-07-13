@@ -60,6 +60,14 @@ const Navbar = () => {
                 Favorites
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to={'/contact'}
+                className={({ isActive }) => (isActive ? 'active' : '')}
+              >
+                Contact us
+              </NavLink>
+            </li>
           </ul>
           <ul className='secondary-links row'>
             <li>
@@ -116,6 +124,14 @@ const Navbar = () => {
               className={({ isActive }) => (isActive ? 'active' : '')}
             >
               Favorites
+            </NavLink>
+          </li>
+          <li onClick={() => setOpenSidebar(false)}>
+            <NavLink
+              to={'/contact'}
+              className={({ isActive }) => (isActive ? 'active' : '')}
+            >
+              Contact us
             </NavLink>
           </li>
         </ul>
