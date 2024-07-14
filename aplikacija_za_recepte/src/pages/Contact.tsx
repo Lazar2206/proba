@@ -1,7 +1,9 @@
+import { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
+
 import lizard from '../assets/lizard.png';
 import envelope from '../assets/envelope.png';
 import '../styles/Contact.css';
-import { useState } from 'react';
 
 const Contact = () => {
   const [name, setName] = useState('');
@@ -9,6 +11,23 @@ const Contact = () => {
   const [message, setMessage] = useState('');
 
   const handleSendMessage = () => {
+    if (name.trim() === '') {
+      toast.error('Please enter your name', { id: 'contact' });
+      return;
+    }
+
+    if (email.trim() === '') {
+      toast.error('Please enter your email', { id: 'contact' });
+      return;
+    }
+
+    if (message.trim() === '') {
+      toast.error('Please enter your message', { id: 'contact' });
+      return;
+    }
+
+    toast.success('Message sent successfully!', { id: 'contact' });
+    
     setName('');
     setEmail('');
     setMessage('');
@@ -16,6 +35,7 @@ const Contact = () => {
 
   return (
     <section className='contact'>
+            <Toaster position='top-center' reverseOrder={false} />
       <div className='container row'>
         <div className='img'>
           <img src={lizard} alt='lizard' className='imglizard' />
